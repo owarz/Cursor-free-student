@@ -2,7 +2,7 @@
 
 Bu script, Cursor Pro'da öğrenci doğrulaması yaparken Türkiye'yi ülke seçenekleri arasına ekler.
 
-![Türkiye Seçeneği Ekran Görüntüsü](tr.jpeg)
+![Türkiye Seçeneği Ekran Görüntüsü](readme.assets/tr.jpeg)
 
 
 ## Kurulum
