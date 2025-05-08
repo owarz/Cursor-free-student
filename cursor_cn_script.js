@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         Cursor SheerID CN国家添加
+// @name         Cursor SheerID TR Türkiye Ekleme
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  将SheerID验证服务的响应中添加CN（中国）国家代码
-// @author       微信：zhrmghwsa
+// @description  SheerID doğrulama servisine TR (Türkiye) ülke kodunu ekler
+// @author       Your Name
 // @match        https://my.sheerid.com/*
 // @match        https://*.sheerid.com/*
 // @match        https://www.cursor.com/cn/student*
@@ -17,45 +17,43 @@
 (function() {
     'use strict';
 
-    // todo 有帮助关注我的小红书：4294434234 或者加微信：zhrmghwsa
-    // 创建一个拦截和修改响应的函数
+    // API yanıtlarını yakalama ve değiştirme fonksiyonu
     const originalFetch = window.fetch;
     window.fetch = async function(url, options) {
         const response = await originalFetch(url, options);
         
-        // 只拦截特定的URL
+        // Sadece belirli URL'leri yakala
         if (url.includes('/rest/v2/program/681044b7729fba7beccd3565/theme') || 
             url.includes('theme?locale=') || 
             url.includes('/rest/v2/program/') && url.includes('/theme')) {
             try {
-                // 克隆响应以便修改
+                // Yanıtı değiştirmek için klonla
                 const clonedResponse = response.clone();
                 const responseBody = await clonedResponse.json();
                 
-                // 检查并修改countries数组
+                // Ülkeler dizisini kontrol et ve değiştir
                 if (responseBody && responseBody.config && Array.isArray(responseBody.config.countries)) {
-                    // 检查CN是否已存在
-                    if (!responseBody.config.countries.includes('CN')) {
-                        console.log('添加CN到国家列表中...');
-                        // 在合适的位置添加CN，按字母顺序
-                        // CH和CI之间是CN的合适位置
-                        const chIndex = responseBody.config.countries.indexOf('CH');
-                        if (chIndex !== -1) {
-                            responseBody.config.countries.splice(chIndex + 1, 0, 'CN');
+                    // TR kodunun var olup olmadığını kontrol et
+                    if (!responseBody.config.countries.includes('TR')) {
+                        console.log('Türkiye (TR) ülke listesine ekleniyor...');
+                        // TR'yi alfabetik sıraya göre ekle (TH ve TN arasına)
+                        const thIndex = responseBody.config.countries.indexOf('TH');
+                        if (thIndex !== -1) {
+                            responseBody.config.countries.splice(thIndex + 1, 0, 'TR');
                         } else {
-                            // 如果没找到CH，就直接添加到数组中
-                            responseBody.config.countries.push('CN');
+                            // TH bulunamazsa, listeye direkt ekle
+                            responseBody.config.countries.push('TR');
                         }
                         
-                        // 添加CN对应的标签
+                        // TR için etiketleri ekle
                         if (responseBody.config.orgSearchCountryTags) {
-                            responseBody.config.orgSearchCountryTags['CN'] = ["HEI", "qualifying_hs", "qualifying_ps"];
+                            responseBody.config.orgSearchCountryTags['TR'] = ["HEI", "qualifying_hs", "qualifying_ps"];
                         }
                         
-                        console.log('成功添加CN到国家列表');
+                        console.log('Türkiye başarıyla ülke listesine eklendi');
                     }
                     
-                    // 创建一个新的响应对象
+                    // Yeni yanıt objesi oluştur
                     return new Response(JSON.stringify(responseBody), {
                         status: response.status,
                         statusText: response.statusText,
@@ -63,14 +61,14 @@
                     });
                 }
             } catch (e) {
-                console.error('处理fetch响应时出错:', e);
+                console.error('Fetch yanıtı işlenirken hata:', e);
                 return response;
             }
         }
         return response;
     };
     
-    // 如果网站使用XMLHttpRequest，同样需要拦截
+    // XMLHttpRequest için de aynı işlemi yap
     const originalXHROpen = XMLHttpRequest.prototype.open;
     const originalXHRSend = XMLHttpRequest.prototype.send;
     
@@ -92,26 +90,23 @@
                         const responseBody = JSON.parse(xhr.responseText);
                         
                         if (responseBody && responseBody.config && Array.isArray(responseBody.config.countries)) {
-                            // 检查CN是否已存在
-                            if (!responseBody.config.countries.includes('CN')) {
-                                console.log('添加CN到国家列表中...(XHR)');
-                                // 在合适的位置添加CN，按字母顺序
-                                const chIndex = responseBody.config.countries.indexOf('CH');
-                                if (chIndex !== -1) {
-                                    responseBody.config.countries.splice(chIndex + 1, 0, 'CN');
+                            if (!responseBody.config.countries.includes('TR')) {
+                                console.log('Türkiye (TR) ülke listesine ekleniyor... (XHR)');
+                                const thIndex = responseBody.config.countries.indexOf('TH');
+                                if (thIndex !== -1) {
+                                    responseBody.config.countries.splice(thIndex + 1, 0, 'TR');
                                 } else {
-                                    responseBody.config.countries.push('CN');
+                                    responseBody.config.countries.push('TR');
                                 }
                                 
-                                // 添加CN对应的标签
                                 if (responseBody.config.orgSearchCountryTags) {
-                                    responseBody.config.orgSearchCountryTags['CN'] = ["HEI", "qualifying_hs", "qualifying_ps"];
+                                    responseBody.config.orgSearchCountryTags['TR'] = ["HEI", "qualifying_hs", "qualifying_ps"];
                                 }
                                 
-                                console.log('成功添加CN到国家列表(XHR)');
+                                console.log('Türkiye başarıyla ülke listesine eklendi (XHR)');
                             }
                             
-                            // 使用定义属性的方式替换responseText
+                            // responseText özelliğini değiştir
                             Object.defineProperty(xhr, 'responseText', {
                                 get: function() {
                                     return JSON.stringify(responseBody);
@@ -119,7 +114,7 @@
                             });
                         }
                     } catch (e) {
-                        console.error('处理XHR响应时出错:', e);
+                        console.error('XHR yanıtı işlenirken hata:', e);
                     }
                 }
                 
@@ -132,5 +127,5 @@
         return originalXHRSend.apply(this, [body]);
     };
     
-    console.log('Cursor SheerID CN国家添加脚本已加载');
+    console.log('Cursor SheerID TR Türkiye ekleme scripti yüklendi');
 })(); 

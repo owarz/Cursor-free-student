@@ -1,54 +1,34 @@
-# cursor Pro 激活选择中国学校脚本
+# Cursor Pro Öğrenci Doğrulama Scripti - Türkiye
 
-【参考认证文档】CursorPro最新激活一年的方法！
+Bu script, Cursor Pro'da öğrenci doğrulaması yaparken Türkiye'yi ülke seçenekleri arasına ekler.
 
-https://docs.qq.com/markdown/DSHNKa3hncWFTZGVR
+## Kullanım Adımları:
 
-## 一、中国学校激活 - 操作步骤：
+1. Microsoft Eğitim E-posta Kaydı: https://go.microsoft.com/fwlink/?linkid=2283200
+2. Cursor web sitesine giriş yapın ve `VERIFY STATUS` butonuna tıklayın: https://www.cursor.com/students
+3. Bu scripti Tampermonkey eklentisine yükleyin
+4. Sayfayı SHIFT tuşuna basılı tutarak yenileyin - artık Türkiye seçeneği görünür olacaktır
+5. Kişisel bilgilerinizi doldurun
+6. SheerID doğrulaması sırasında Microsoft eğitim e-postanızı kullanın
+7. E-posta gelen kutunuzu kontrol edin
+8. Kayıt tamamlandı!
 
-把我的js脚本导入到浏览器 油猴（篡改猴中） 按住shift 刷新认证的国家选择的页面，发现可以选择 china 甚至所有的中国学校都能出来了！  包括985
+## Önemli Notlar:
 
-记得启用我的脚本
+- Script, SheerID doğrulama servisine Türkiye (TR) ülke kodunu ekler
+- Türkiye'deki üniversitelerin seçilebilmesini sağlar
+- Tampermonkey veya benzeri bir userscript yöneticisi gereklidir
 
-![74662920688](readme.assets/1746629206886.png)
+## Nasıl Çalışır?
 
+Script, SheerID'nin API yanıtlarını izler ve ülke listesine Türkiye'yi (TR) ekler. Bu sayede:
 
+- Ülke seçiminde Türkiye görünür olur
+- Türk üniversiteleri listeye eklenir
+- Doğrulama süreci sorunsuz ilerler
 
-2025年5月7日 运行效果 ↓
+## Güvenlik
 
-注意重新打开认证界面，看到我的js脚本激活说明成功了，可以选择china
-
-![74667183279](readme.assets/1746671832794.png)
-
-![74662911900](readme.assets/1746629119006.png)
-
-
-
-## 二、学生认证其他问题加入qq交流群
-
-
-
-群号是 ： ~~811966302~~ 满了  进入：915539110 （请备注GitHub）
-
-~~[74662927475](readme.assets/1746629274756.png) 失效群1图片~~
-
-2025年5月8日 下午起 进新群 👇
-
-![74668560068](readme.assets/1746685600686.png)
-
-
-
-
-公众号链接，欢迎点赞： [5月7日晚 CursorPro最新激活一年的方法！稀缺资源，手慢无！](https://mp.weixin.qq.com/s/htpMwxJT73L-hQwJ7ritHA)
-
-
-
-## 三、简述操作步骤:
-
-1. 微软教育版邮箱注册： https://go.microsoft.com/fwlink/?linkid=2283200
-2. 登陆 Cursor 官网，点击 `VERIFY STATUS` ：https://www.cursor.com/students
-3. 用https://github.com/DIFFfeng/Cursor-free-student 脚本拖入到 **'油猴'插件管理页面** 就能刷新出 China 地区
-4. 填写个人信息
-5. 遇到SheerID验证时填写第一步注册的微软教育邮箱即可
-6. 然后几秒后查看教育邮箱的收件箱
-7. 注册成功！
+- Script açık kaynak kodludur
+- Sadece ülke listesine Türkiye'yi ekler
+- Kişisel verilerinize müdahale etmez
