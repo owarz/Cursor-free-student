@@ -2,6 +2,21 @@
 
 Bu script, Cursor Pro'da öğrenci doğrulaması yaparken Türkiye'yi ülke seçenekleri arasına ekler.
 
+![Türkiye Seçeneği Ekran Görüntüsü](tr.jpeg)
+
+
+## Kurulum
+
+1. Tampermonkey eklentisini tarayıcınıza yükleyin:
+   - [Chrome için Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+   - [Firefox için Tampermonkey](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
+
+2. Aşağıdaki bağlantıya tıklayarak veya script dosyasını Tampermonkey'e manuel olarak ekleyerek scripti yükleyin.
+
+3. Scripti etkinleştirin ve Cursor Pro öğrenci doğrulama sayfasını ziyaret edin.
+
+
+
 ## Kullanım Adımları:
 
 1. Microsoft Eğitim E-posta Kaydı: https://go.microsoft.com/fwlink/?linkid=2283200
