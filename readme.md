@@ -11,9 +11,9 @@ Bu script, Cursor Pro'da öğrenci doğrulaması yaparken Türkiye'yi ülke seç
    - [Chrome için Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
    - [Firefox için Tampermonkey](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
 
-2. Aşağıdaki bağlantıya tıklayarak veya script dosyasını Tampermonkey'e manuel olarak ekleyerek scripti yükleyin.
+2. https://github.com/owarz/Cursor-free-student/blob/main/cursor_tr_script.js script dosyasını Tampermonkey'e manuel olarak ekleyerek scripti yükleyin.
 
-3. Scripti etkinleştirin ve Cursor Pro öğrenci doğrulama sayfasını ziyaret edin.
+3. Scripti etkinleştirin ve Cursor Pro öğrenci doğrulama sayfasını ziyaret edin. (shift'e basarak sayfayı yenileyin)
 
 
 
